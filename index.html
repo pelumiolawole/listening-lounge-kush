@@ -161,7 +161,48 @@
         }
         .hero-title em { font-style: italic; font-weight: 400; color: var(--warm-brown); display: inline; position: relative; }
         .hero-title em::after { content: ''; position: absolute; bottom: 2px; left: 0; right: 0; height: 8px; background: rgba(201, 168, 76, 0.15); z-index: -1; border-radius: 2px; }
-        .hero-subtitle {
+                .hero-brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 32px;
+            opacity: 0;
+            animation: fadeUp 0.9s ease 0.2s forwards;
+        }
+        .hero-brand-logo img {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+            border-radius: 10px;
+            opacity: 0.85;
+            transition: opacity 0.4s ease;
+        }
+        .hero-brand-logo:hover img { opacity: 1; }
+        .hero-brand-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .hero-brand-text .brand-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--deep-brown);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+        .hero-brand-text .brand-tag {
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: var(--taupe);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        @media (max-width: 768px) {
+            .hero-brand-logo { justify-content: center; }
+        }
+
+.hero-subtitle {
             font-size: clamp(1rem, 1.5vw, 1.15rem); font-weight: 300;
             line-height: 1.8; color: var(--medium-brown);
             max-width: 480px; margin-bottom: 40px;
@@ -505,6 +546,7 @@
         }
     </style>
 <base target="_blank">
+<base target="_blank">
 </head>
 <body>
 
@@ -544,6 +586,13 @@
 
         <div class="hero-content">
             <div class="hero-text">
+                <div class="hero-brand-logo">
+                    <img src="kush-logo.JPG" alt="Kush The Host">
+                    <div class="hero-brand-text">
+                        <span class="brand-name">Kush The Host</span>
+                        <span class="brand-tag">Presents</span>
+                    </div>
+                </div>
                 <div class="hero-badge">
                     <span class="dot"></span>
                     Launching May 2026
