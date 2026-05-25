@@ -36,21 +36,16 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ========== KEYFRAMES ========== */
         @keyframes fadeUp { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes fadeScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-80px); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes slideInRight { from { opacity: 0; transform: translateX(80px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes breathe { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.02); } }
         @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 33% { transform: translateY(-15px) rotate(1deg); } 66% { transform: translateY(-8px) rotate(-0.5deg); } }
         @keyframes floatSlow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
         @keyframes grain { 0%, 100% { transform: translate(0, 0); } 10% { transform: translate(-2%, -2%); } 20% { transform: translate(2%, 2%); } 30% { transform: translate(-1%, 1%); } 40% { transform: translate(1%, -1%); } 50% { transform: translate(-2%, 2%); } 60% { transform: translate(2%, -2%); } 70% { transform: translate(-1%, -1%); } 80% { transform: translate(1%, 1%); } 90% { transform: translate(-2%, -1%); } }
-        @keyframes drawLine { from { transform: scaleX(0); } to { transform: scaleX(1); } }
         @keyframes ripple { 0% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.3); } 70% { box-shadow: 0 0 0 15px rgba(201, 168, 76, 0); } 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0); } }
         @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.8; } }
 
-        /* ========== SCROLL REVEAL ========== */
         .reveal { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.22, 1, 0.36, 1); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
         .reveal-left { opacity: 0; transform: translateX(-60px); transition: all 1s cubic-bezier(0.22, 1, 0.36, 1); }
@@ -63,10 +58,7 @@
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
         .delay-4 { transition-delay: 0.4s; }
-        .delay-5 { transition-delay: 0.5s; }
-        .delay-6 { transition-delay: 0.6s; }
 
-        /* ========== NAVBAR ========== */
         .navbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             padding: 24px 48px;
@@ -114,7 +106,6 @@
         .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001; }
         .mobile-menu-btn svg { width: 24px; height: 24px; stroke: var(--deep-brown); fill: none; stroke-width: 2; }
 
-        /* ========== HERO ========== */
         .hero {
             min-height: 100vh; display: flex; align-items: center;
             position: relative; padding: 140px 48px 100px;
@@ -135,9 +126,6 @@
         .ambient-1 { width: 400px; height: 400px; background: rgba(201, 168, 76, 0.08); top: 10%; left: -5%; animation: floatSlow 12s ease-in-out infinite; }
         .ambient-2 { width: 300px; height: 300px; background: rgba(139, 105, 20, 0.06); bottom: 20%; right: -3%; animation: floatSlow 15s ease-in-out infinite 3s; }
         .ambient-3 { width: 200px; height: 200px; background: rgba(201, 168, 76, 0.05); top: 50%; left: 60%; animation: floatSlow 10s ease-in-out infinite 1.5s; }
-        .hero-line-art { position: absolute; bottom: 0; left: 0; right: 0; height: 120px; opacity: 0.06; pointer-events: none; }
-        .hero-line-art svg { width: 100%; height: 100%; }
-
         .hero-content {
             max-width: 1200px; width: 100%; margin: 0 auto;
             display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
@@ -161,48 +149,29 @@
         }
         .hero-title em { font-style: italic; font-weight: 400; color: var(--warm-brown); display: inline; position: relative; }
         .hero-title em::after { content: ''; position: absolute; bottom: 2px; left: 0; right: 0; height: 8px; background: rgba(201, 168, 76, 0.15); z-index: -1; border-radius: 2px; }
-                .hero-brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 32px;
-            opacity: 0;
+        .hero-brand-logo {
+            display: flex; align-items: center; gap: 14px;
+            margin-bottom: 32px; opacity: 0;
             animation: fadeUp 0.9s ease 0.2s forwards;
         }
         .hero-brand-logo img {
-            width: 52px;
-            height: 52px;
-            object-fit: contain;
-            border-radius: 10px;
-            opacity: 0.85;
+            width: 52px; height: 52px; object-fit: contain;
+            border-radius: 10px; opacity: 0.85;
             transition: opacity 0.4s ease;
         }
         .hero-brand-logo:hover img { opacity: 1; }
-        .hero-brand-text {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
+        .hero-brand-text { display: flex; flex-direction: column; gap: 2px; }
         .hero-brand-text .brand-name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
-            font-weight: 500;
-            color: var(--deep-brown);
-            letter-spacing: 0.5px;
-            line-height: 1.2;
+            font-size: 1.15rem; font-weight: 500;
+            color: var(--deep-brown); letter-spacing: 0.5px; line-height: 1.2;
         }
         .hero-brand-text .brand-tag {
-            font-size: 0.7rem;
-            font-weight: 400;
-            color: var(--taupe);
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            font-size: 0.7rem; font-weight: 400; color: var(--taupe);
+            letter-spacing: 2px; text-transform: uppercase;
         }
-        @media (max-width: 768px) {
-            .hero-brand-logo { justify-content: center; }
-        }
-
-.hero-subtitle {
+        @media (max-width: 768px) { .hero-brand-logo { justify-content: center; } }
+        .hero-subtitle {
             font-size: clamp(1rem, 1.5vw, 1.15rem); font-weight: 300;
             line-height: 1.8; color: var(--medium-brown);
             max-width: 480px; margin-bottom: 40px;
@@ -237,7 +206,6 @@
         }
         .btn-secondary:hover { border-color: var(--soft-gold); background: rgba(201, 168, 76, 0.06); transform: translateY(-3px); }
 
-        /* Hero Visual */
         .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; }
         .hero-image-frame {
             position: relative; width: 100%; max-width: 480px; aspect-ratio: 3/4;
@@ -274,7 +242,64 @@
         .scroll-hint span { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--taupe); }
         .scroll-hint-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--soft-gold), transparent); animation: breathe 2.5s ease infinite; }
 
-        /* ========== SECTIONS ========== */
+        /* NAVBAR KUSH LOGO */
+        .nav-logo-kush {
+            display: flex; align-items: center; gap: 10px;
+        }
+        .nav-logo-kush img {
+            width: 36px; height: 36px; object-fit: contain;
+            border-radius: 8px; opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        .nav-logo-kush:hover img { opacity: 1; }
+        .nav-logo-divider {
+            width: 1px; height: 24px; background: rgba(201, 168, 76, 0.3);
+        }
+        .nav-logo-text { display: flex; flex-direction: column; gap: 0; }
+        .nav-logo-text .brand-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem; font-weight: 500;
+            color: var(--deep-brown); line-height: 1.2;
+        }
+        .nav-logo-text .brand-sub {
+            font-size: 0.65rem; font-weight: 400;
+            color: var(--taupe); letter-spacing: 2px;
+            text-transform: uppercase; line-height: 1;
+        }
+
+        /* ROOM IMAGE SECTION */
+        .room-section {
+            background: var(--ivory); padding: 100px 48px;
+            position: relative; overflow: hidden;
+        }
+        .room-section::before {
+            content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 100px;
+            background: linear-gradient(to bottom, var(--warm-white), transparent); pointer-events: none;
+        }
+        .room-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+        .room-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--soft-gold); margin-bottom: 20px; display: inline-block; }
+        .room-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 400;
+            color: var(--deep-brown); margin-bottom: 48px; line-height: 1.2;
+        }
+        .room-image-wrap {
+            position: relative; border-radius: 24px;
+            overflow: hidden; box-shadow: 0 30px 80px var(--shadow-deep);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .room-image-wrap:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 40px 100px var(--shadow-deep);
+        }
+        .room-image-wrap img { width: 100%; height: auto; display: block; transition: transform 0.8s ease; }
+        .room-image-wrap:hover img { transform: scale(1.03); }
+        .room-caption {
+            margin-top: 28px; font-size: 0.9rem; font-weight: 300;
+            color: var(--medium-brown); line-height: 1.7;
+            max-width: 600px; margin-left: auto; margin-right: auto;
+        }
+
         section { padding: 120px 48px; position: relative; overflow: hidden; }
         .section-inner { max-width: 1200px; margin: 0 auto; }
         .section-header { text-align: center; max-width: 700px; margin: 0 auto 80px; }
@@ -284,7 +309,6 @@
         .section-line.visible { transform: scaleX(1); }
         .section-desc { font-size: 1.05rem; font-weight: 300; line-height: 1.8; color: var(--medium-brown); margin-top: 28px; }
 
-        /* ========== WHAT IS IT ========== */
         .what-is { background: var(--ivory); position: relative; }
         .what-is::before { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 100px; background: linear-gradient(to bottom, var(--warm-white), transparent); pointer-events: none; }
         .what-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
@@ -305,14 +329,12 @@
         .what-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; color: var(--deep-brown); margin-bottom: 14px; }
         .what-card p { font-size: 0.88rem; font-weight: 300; line-height: 1.7; color: var(--medium-brown); }
 
-        /* ========== PROMISE ========== */
         .promise-section { background: var(--deep-brown); padding: 100px 48px; text-align: center; position: relative; overflow: hidden; }
         .promise-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(139, 105, 20, 0.04) 0%, transparent 50%); animation: breathe 6s ease infinite; }
         .promise-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; font-style: italic; color: var(--light-gold); max-width: 800px; margin: 0 auto; line-height: 1.4; position: relative; z-index: 2; }
         .promise-author { font-size: 0.85rem; color: var(--taupe); letter-spacing: 3px; text-transform: uppercase; margin-top: 24px; position: relative; z-index: 2; }
         .promise-quote-mark { font-family: 'Cormorant Garamond', serif; font-size: 10rem; color: rgba(201, 168, 76, 0.08); line-height: 0.3; position: relative; z-index: 1; margin-bottom: -20px; }
 
-        /* ========== HOW IT WORKS ========== */
         .how-it-works { background: var(--cream); position: relative; }
         .how-it-works::before { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 100px; background: linear-gradient(to bottom, var(--ivory), transparent); pointer-events: none; }
         .steps-container { max-width: 900px; margin: 0 auto; position: relative; }
@@ -334,7 +356,6 @@
         .step-visual { margin-top: 16px; padding: 16px 20px; background: var(--warm-white); border-radius: 12px; border-left: 3px solid var(--soft-gold); display: inline-flex; align-items: center; gap: 10px; font-size: 0.8rem; color: var(--taupe); }
         .step-visual svg { width: 16px; height: 16px; stroke: var(--soft-gold); fill: none; stroke-width: 2; }
 
-        /* ========== CORE VALUES ========== */
         .core-values { background: var(--ivory); position: relative; }
         .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1100px; margin: 0 auto; }
         .value-card {
@@ -354,7 +375,6 @@
         .value-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 500; color: var(--deep-brown); margin-bottom: 14px; }
         .value-card p { font-size: 0.9rem; font-weight: 300; line-height: 1.7; color: var(--medium-brown); }
 
-        /* ========== SESSIONS ========== */
         .sessions { background: var(--cream); position: relative; }
         .sessions::before { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 100px; background: linear-gradient(to bottom, var(--ivory), transparent); pointer-events: none; }
         .sessions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 900px; margin: 0 auto; }
@@ -390,7 +410,6 @@
         .btn-book:hover::before { transform: translateX(100%); }
         .btn-book:hover { background: var(--medium-brown); transform: translateY(-3px); box-shadow: 0 12px 40px var(--shadow-deep); animation: ripple 2s ease infinite; }
 
-        /* Data note */
         .data-note { max-width: 750px; margin: 50px auto 0; background: var(--ivory); border: 1px solid rgba(201, 168, 76, 0.12); border-radius: 20px; padding: 32px 36px; text-align: center; position: relative; }
         .data-note-header { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 16px; }
         .data-note-header svg { width: 20px; height: 20px; stroke: var(--soft-gold); fill: none; stroke-width: 2; }
@@ -404,7 +423,6 @@
         .limited-note { text-align: center; margin-top: 36px; font-size: 0.82rem; color: var(--taupe); display: flex; align-items: center; justify-content: center; gap: 8px; }
         .limited-note svg { width: 16px; height: 16px; stroke: var(--soft-gold); fill: none; stroke-width: 2; }
 
-        /* ========== ABOUT ========== */
         .about { background: var(--ivory); position: relative; }
         .about::before { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 100px; background: linear-gradient(to bottom, var(--cream), transparent); pointer-events: none; }
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: center; }
@@ -424,19 +442,33 @@
         .about-value:hover svg { transform: scale(1.2); stroke: var(--warm-brown); }
         .about-value span { font-size: 0.9rem; font-weight: 400; color: var(--deep-brown); }
 
-        /* ========== TESTIMONIALS ========== */
+        /* TESTIMONIALS CAROUSEL */
         .testimonials { background: var(--cream); position: relative; }
         .testimonials::before { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 100px; background: linear-gradient(to bottom, var(--ivory), transparent); pointer-events: none; }
-        .testimonial-card { max-width: 700px; margin: 0 auto; text-align: center; padding: 60px 40px; background: var(--ivory); border-radius: 24px; border: 1px solid rgba(201, 168, 76, 0.08); position: relative; }
+        .testimonial-carousel { max-width: 700px; margin: 0 auto; position: relative; min-height: 320px; }
+        .testimonial-slide {
+            position: absolute; top: 0; left: 0; right: 0;
+            text-align: center; padding: 60px 40px;
+            background: var(--ivory); border-radius: 24px;
+            border: 1px solid rgba(201, 168, 76, 0.08);
+            opacity: 0; transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            pointer-events: none;
+        }
+        .testimonial-slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+        .testimonial-slide.prev { opacity: 0; transform: translateX(-40px); }
         .testimonial-quote-mark { font-family: 'Cormorant Garamond', serif; font-size: 6rem; color: rgba(201, 168, 76, 0.12); line-height: 0.5; margin-bottom: 20px; }
         .testimonial-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2.5vw, 1.7rem); font-weight: 300; font-style: italic; color: var(--medium-brown); line-height: 1.6; margin-bottom: 28px; }
         .testimonial-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--soft-gold), var(--light-gold)); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; color: var(--deep-brown); }
         .testimonial-name { font-size: 0.9rem; font-weight: 500; color: var(--deep-brown); }
         .testimonial-role { font-size: 0.78rem; color: var(--taupe); margin-top: 4px; }
+        .carousel-dots { display: flex; justify-content: center; gap: 10px; margin-top: 340px; }
+        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(201, 168, 76, 0.25); border: none; cursor: pointer; transition: all 0.4s ease; }
+        .carousel-dot.active { background: var(--soft-gold); transform: scale(1.2); }
+        .carousel-dot:hover { background: var(--muted-gold); }
         .coming-soon-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201, 168, 76, 0.1); border: 1px solid rgba(201, 168, 76, 0.2); padding: 8px 20px; border-radius: 40px; font-size: 0.75rem; font-weight: 500; color: var(--warm-brown); letter-spacing: 1px; text-transform: uppercase; margin-top: 20px; }
         .coming-soon-badge .dot { width: 5px; height: 5px; background: var(--soft-gold); border-radius: 50%; animation: pulse 2s ease infinite; }
 
-        /* ========== FAQ ========== */
         .faq { background: var(--ivory); position: relative; }
         .faq::before { content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 100px; background: linear-gradient(to bottom, var(--cream), transparent); pointer-events: none; }
         .faq-container { max-width: 800px; margin: 0 auto; }
@@ -455,7 +487,6 @@
         .faq-answer p { font-size: 0.95rem; font-weight: 300; line-height: 1.8; color: var(--medium-brown); }
         .faq-answer p + p { margin-top: 12px; }
 
-        /* ========== CTA ========== */
         .cta-section { background: var(--deep-brown); padding: 120px 48px; text-align: center; position: relative; overflow: hidden; }
         .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 25% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 50%), radial-gradient(circle at 75% 50%, rgba(139, 105, 20, 0.05) 0%, transparent 50%); animation: breathe 5s ease infinite; }
         .cta-grain { position: absolute; inset: -50%; width: 200%; height: 200%; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E"); animation: grain 10s steps(10) infinite; pointer-events: none; opacity: 0.5; }
@@ -477,7 +508,6 @@
         .btn-cta svg { transition: transform 0.4s ease; }
         .btn-cta:hover svg { transform: translateX(5px); }
 
-        /* ========== FOOTER ========== */
         footer { background: var(--deep-brown); padding: 70px 48px 50px; text-align: center; border-top: 1px solid rgba(201, 168, 76, 0.08); position: relative; }
         .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--light-gold); margin-bottom: 12px; display: inline-flex; align-items: center; gap: 12px; }
         .footer-tagline { font-size: 0.85rem; color: var(--taupe); margin-bottom: 36px; font-weight: 300; }
@@ -493,8 +523,10 @@
         .footer-socials a:hover svg { stroke: var(--soft-gold); }
         .footer-copy { font-size: 0.75rem; color: var(--taupe); opacity: 0.5; }
         .footer-divider { width: 40px; height: 1px; background: rgba(201, 168, 76, 0.2); margin: 0 auto 36px; }
+        .footer-email { font-size: 0.82rem; color: var(--soft-taupe); margin-bottom: 24px; }
+        .footer-email a { color: var(--soft-gold); text-decoration: none; transition: color 0.3s ease; }
+        .footer-email a:hover { color: var(--light-gold); }
 
-        /* ========== COOKIE BANNER ========== */
         .cookie-banner {
             position: fixed; bottom: 0; left: 0; right: 0; background: var(--deep-brown); color: var(--cream);
             padding: 22px 48px; z-index: 9999; display: flex; align-items: center; justify-content: space-between;
@@ -514,7 +546,6 @@
         .cookie-btn-secondary { background: transparent; color: var(--soft-taupe); border: 1px solid var(--soft-taupe); }
         .cookie-btn-secondary:hover { border-color: var(--soft-gold); color: var(--soft-gold); }
 
-        /* ========== RESPONSIVE ========== */
         @media (max-width: 1024px) {
             .what-grid { grid-template-columns: repeat(2, 1fr); }
             .values-grid { grid-template-columns: repeat(2, 1fr); }
@@ -543,23 +574,25 @@
             .cookie-banner { padding: 20px 24px; }
             .data-note { padding: 24px; }
             .data-badges { gap: 16px; }
+            .room-section { padding: 60px 24px; }
+            .testimonial-slide { padding: 40px 24px; }
+            .carousel-dots { margin-top: 300px; }
         }
     </style>
-<base target="_blank">
-<base target="_blank">
 </head>
 <body>
 
     <!-- ========== NAVBAR ========== -->
     <nav class="navbar" id="navbar">
         <a href="#" class="nav-logo">
-            <svg viewBox="0 0 40 40" fill="none">
-                <rect x="4" y="12" width="14" height="16" rx="3" fill="var(--soft-gold)" opacity="0.3"/>
-                <rect x="22" y="8" width="14" height="24" rx="3" fill="var(--soft-gold)" opacity="0.6"/>
-                <circle cx="11" cy="20" r="2" fill="var(--deep-brown)"/>
-                <circle cx="29" cy="20" r="2" fill="var(--deep-brown)"/>
-            </svg>
-            Listening Lounge
+            <div class="nav-logo-kush">
+                <img src="kush-logo.JPG" alt="Kush The Host">
+                <div class="nav-logo-divider"></div>
+                <div class="nav-logo-text">
+                    <span class="brand-main">Listening Lounge</span>
+                    <span class="brand-sub">by Kush</span>
+                </div>
+            </div>
         </a>
         <div class="nav-links">
             <a href="#about">About</a>
@@ -648,6 +681,18 @@
         </div>
     </section>
 
+    <!-- ========== ROOM IMAGE SECTION ========== -->
+    <section class="room-section">
+        <div class="room-inner">
+            <p class="room-label reveal">The Space</p>
+            <h2 class="room-title reveal">A quiet room, two chairs, and the freedom to speak</h2>
+            <div class="room-image-wrap reveal delay-1">
+                <img src="https://kimi-web-img.moonshot.cn/img/thumbs.dreamstime.com/0ab124d715a72f1c1c6ca7d858ed15dbaa80192c.jpg" alt="Two empty chairs in a warm, softly lit room - a confidential discussion space" loading="lazy">
+            </div>
+            <p class="room-caption reveal delay-2">Every session begins in a space designed for comfort and confidentiality. No distractions. Just you, and someone ready to listen.</p>
+        </div>
+    </section>
+
     <!-- ========== WHAT IS IT ========== -->
     <section class="what-is" id="about">
         <div class="section-inner">
@@ -670,7 +715,7 @@
                         <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                     </div>
                     <h3>Confidential</h3>
-                    <p>Your sessions are private and secure. What you share stays between us. Full discretion, always..</p>
+                    <p>Your sessions are private and secure. What you share stays between us. Full discretion, always.</p>
                 </div>
                 <div class="what-card reveal delay-3">
                     <div class="what-icon">
@@ -726,10 +771,10 @@
                     </div>
                     <div class="step-content">
                         <h3>Join the Session</h3>
-                        <p>Connect online via video call at your scheduled time. Find a quiet, comfortable space where you feel safe to open up.</p>
+                        <p>Connect online via a meeting link at your scheduled time. You can opt for audio only or video. Video is not compulsory, so you can choose whatever feels most comfortable for you. Find a quiet, comfortable space where you feel safe to open up.</p>
                         <div class="step-visual">
                             <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-                            Secure video call
+                            Audio or video, your choice
                         </div>
                     </div>
                 </div>
@@ -815,32 +860,44 @@
                     <div class="session-duration">30<span>min</span></div>
                     <p class="session-label-text">Express Session</p>
                     <ul class="session-features">
-                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>1-to-1 Online Video Call</li>
+                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>1-to-1 Online Session</li>
                         <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Confidential &amp; Private</li>
                         <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>End-of-Session Check-In</li>
                         <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Signposting If Needed</li>
                     </ul>
                     <div class="session-price"><span class="currency">£</span>30<span class="period"> / session</span></div>
-                    <button class="btn-book" onclick="alert('Booking system coming soon!')">
-                        Book 30-Min Session
+                    <a href="https://www.paypal.com/ncp/payment/DG2M88YH6UBZY" class="btn-book" target="_blank" rel="noopener">
+                        Pay £30 via PayPal
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </button>
+                    </a>
+                    <div style="margin-top: 16px;">
+                        <a href="https://calendly.com/kushthehost/listening-lounge" class="btn-secondary" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 12px 24px;" target="_blank" rel="noopener">
+                            Schedule on Calendly
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        </a>
+                    </div>
                 </div>
                 <div class="session-card featured reveal delay-2">
                     <div class="session-duration">45<span>min</span></div>
                     <p class="session-label-text">Deep Session</p>
                     <ul class="session-features">
-                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>1-to-1 Online Video Call</li>
+                        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>1-to-1 Online Session</li>
                         <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Confidential &amp; Private</li>
                         <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>More Time to Unpack</li>
                         <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>End-of-Session Check-In</li>
                         <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Signposting If Needed</li>
                     </ul>
                     <div class="session-price"><span class="currency">£</span>45<span class="period"> / session</span></div>
-                    <button class="btn-book" onclick="alert('Booking system coming soon!')">
-                        Book 45-Min Session
+                    <a href="https://www.paypal.com/ncp/payment/7TBH5ULHPCQVA" class="btn-book" target="_blank" rel="noopener">
+                        Pay £45 via PayPal
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </button>
+                    </a>
+                    <div style="margin-top: 16px;">
+                        <a href="https://calendly.com/kushthehost/listening-lounge-1" class="btn-secondary" style="width: 100%; justify-content: center; font-size: 0.85rem; padding: 12px 24px;" target="_blank" rel="noopener">
+                            Schedule on Calendly
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -907,7 +964,7 @@
         </div>
     </section>
 
-    <!-- ========== TESTIMONIALS ========== -->
+    <!-- ========== TESTIMONIALS CAROUSEL ========== -->
     <section class="testimonials">
         <div class="section-inner">
             <div class="section-header reveal">
@@ -915,12 +972,25 @@
                 <h2 class="section-title">What People Say</h2>
                 <div class="section-line"></div>
             </div>
-            <div class="testimonial-card reveal-scale">
-                <div class="testimonial-quote-mark">"</div>
-                <p class="testimonial-text">Being heard is so close to being loved that for the average person, they are almost indistinguishable.</p>
-                <div class="testimonial-avatar">D</div>
-                <p class="testimonial-name">David Augsburger</p>
-                <p class="testimonial-role">Author & Counselor</p>
+            <div class="testimonial-carousel">
+                <div class="testimonial-slide active" data-slide="0">
+                    <div class="testimonial-quote-mark">"</div>
+                    <p class="testimonial-text">Being heard is so close to being loved that for the average person, they are almost indistinguishable.</p>
+                    <div class="testimonial-avatar">D</div>
+                    <p class="testimonial-name">David Augsburger</p>
+                    <p class="testimonial-role">Author &amp; Counselor</p>
+                </div>
+                <div class="testimonial-slide" data-slide="1">
+                    <div class="testimonial-quote-mark">"</div>
+                    <p class="testimonial-text">When people talk, listen completely. Most people never listen. They are just waiting for their turn to speak.</p>
+                    <div class="testimonial-avatar">E</div>
+                    <p class="testimonial-name">Ernest Hemingway</p>
+                    <p class="testimonial-role">Writer &amp; Journalist</p>
+                </div>
+                <div class="carousel-dots">
+                    <button class="carousel-dot active" onclick="goToSlide(0)"></button>
+                    <button class="carousel-dot" onclick="goToSlide(1)"></button>
+                </div>
                 <div class="coming-soon-badge">
                     <span class="dot"></span>
                     Member testimonials coming soon
@@ -971,7 +1041,7 @@
                         <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Once you book, you'll receive a secure video call link before your session. All you need is a quiet space, a stable internet connection, and a device with a camera and microphone. Headphones are recommended for privacy.</p>
+                        <p>Once you book, you'll receive a secure meeting link before your session. You can join via audio only or video, whatever feels most comfortable. Video is not compulsory. All you need is a quiet space, a stable internet connection, and a device with a microphone. Headphones are recommended for privacy.</p>
                     </div>
                 </div>
                 <div class="faq-item reveal delay-4">
@@ -1020,6 +1090,7 @@
             <a href="#faq">FAQ</a>
             <a href="privacy.html">Privacy</a>
         </div>
+        <p class="footer-email">Questions? <a href="mailto:info@kushthehost.com">info@kushthehost.com</a></p>
         <div class="footer-socials">
             <a href="#" aria-label="Instagram">
                 <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -1052,7 +1123,6 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // Animate section lines
                     const line = entry.target.querySelector('.section-line');
                     if (line) line.classList.add('visible');
                     if (entry.target.classList.contains('section-header')) {
@@ -1065,7 +1135,6 @@
 
         document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => revealObserver.observe(el));
 
-        // Also observe standalone section lines
         document.querySelectorAll('.section-line').forEach(line => {
             const lineObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
@@ -1145,6 +1214,48 @@
             navLinks.style.boxShadow = '0 10px 40px rgba(44,24,16,0.1)';
             navLinks.style.zIndex = '999';
         }
+
+        // ========== TESTIMONIAL CAROUSEL ==========
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let carouselInterval;
+
+        function goToSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active', 'prev');
+                if (i === index) {
+                    slide.classList.add('active');
+                } else if (i < index) {
+                    slide.classList.add('prev');
+                }
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % slides.length;
+            goToSlide(next);
+        }
+
+        function startCarousel() {
+            carouselInterval = setInterval(nextSlide, 6000);
+        }
+
+        function stopCarousel() {
+            clearInterval(carouselInterval);
+        }
+
+        // Start auto-rotate
+        startCarousel();
+
+        // Pause on hover
+        const carousel = document.querySelector('.testimonial-carousel');
+        carousel.addEventListener('mouseenter', stopCarousel);
+        carousel.addEventListener('mouseleave', startCarousel);
     </script>
 </body>
 </html>

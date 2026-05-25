@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Listening Lounge by Kush</title>
+    <meta name="description" content="Privacy Policy for The Listening Lounge by Kush. How we collect, use, store, and protect your personal information.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #F7F2EA;
+            --warm-white: #FDF9F3;
+            --ivory: #FFFDF8;
+            --deep-brown: #2C1810;
+            --medium-brown: #5C3D2E;
+            --warm-brown: #8B6914;
+            --soft-gold: #C9A84C;
+            --light-gold: #E8D5A3;
+            --muted-gold: #B8954F;
+            --taupe: #A08B7A;
+            --soft-taupe: #C4B5A5;
+            --parchment: #EDE6D8;
+            --shadow-soft: rgba(44, 24, 16, 0.06);
+            --shadow-medium: rgba(44, 24, 16, 0.1);
+            --shadow-deep: rgba(44, 24, 16, 0.15);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--deep-brown);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.8;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 24px 48px;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+            background: rgba(247, 242, 234, 0.92);
+            backdrop-filter: blur(24px) saturate(1.2);
+            box-shadow: 0 2px 30px var(--shadow-soft);
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem; font-weight: 500; color: var(--deep-brown);
+            text-decoration: none; display: flex; align-items: center; gap: 12px;
+        }
+        .nav-logo svg { width: 32px; height: 32px; }
+        .nav-links {
+            display: flex; gap: 40px; align-items: center;
+        }
+        .nav-links a {
+            font-size: 0.85rem; font-weight: 400; color: var(--medium-brown);
+            text-decoration: none; letter-spacing: 0.8px;
+            position: relative; transition: all 0.4s ease; padding: 4px 0;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -2px; left: 50%; width: 0; height: 1.5px;
+            background: var(--soft-gold); transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateX(-50%);
+        }
+        .nav-links a:hover { color: var(--deep-brown); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: var(--deep-brown); color: var(--cream) !important;
+            padding: 12px 28px; border-radius: 40px; font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--medium-brown); transform: translateY(-3px); box-shadow: 0 8px 30px var(--shadow-deep); }
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001; }
+        .mobile-menu-btn svg { width: 24px; height: 24px; stroke: var(--deep-brown); fill: none; stroke-width: 2; }
+
+        /* Hero */
+        .privacy-hero {
+            padding: 140px 48px 60px;
+            text-align: center;
+            background: var(--warm-white);
+            position: relative;
+            overflow: hidden;
+        }
+        .privacy-hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201, 168, 76, 0.06) 0%, transparent 60%);
+        }
+        .privacy-hero-content { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+        .privacy-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem); font-weight: 400;
+            color: var(--deep-brown); margin-bottom: 16px; line-height: 1.2;
+        }
+        .privacy-hero p {
+            font-size: 1rem; font-weight: 300; color: var(--medium-brown);
+            line-height: 1.7;
+        }
+        .hero-line { width: 60px; height: 1.5px; background: var(--soft-gold); margin: 24px auto 0; }
+
+        /* Content */
+        .privacy-content {
+            max-width: 800px; margin: 0 auto;
+            padding: 80px 48px 120px;
+        }
+        .policy-section {
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+        }
+        .policy-section:last-child { border-bottom: none; }
+        .policy-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem; font-weight: 500;
+            color: var(--deep-brown); margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        .policy-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem; font-weight: 500;
+            color: var(--medium-brown); margin: 24px 0 12px;
+        }
+        .policy-section p {
+            font-size: 0.95rem; font-weight: 300;
+            color: var(--medium-brown); line-height: 1.9;
+            margin-bottom: 14px;
+        }
+        .policy-section ul {
+            list-style: none; margin: 16px 0; padding-left: 0;
+        }
+        .policy-section ul li {
+            font-size: 0.95rem; font-weight: 300;
+            color: var(--medium-brown); line-height: 1.9;
+            margin-bottom: 8px;
+            padding-left: 24px;
+            position: relative;
+        }
+        .policy-section ul li::before {
+            content: ''; position: absolute; left: 0; top: 12px;
+            width: 6px; height: 6px; background: var(--soft-gold);
+            border-radius: 50%;
+        }
+        .policy-section strong {
+            color: var(--deep-brown); font-weight: 500;
+        }
+
+        /* Footer */
+        footer { background: var(--deep-brown); padding: 60px 48px 40px; text-align: center; border-top: 1px solid rgba(201, 168, 76, 0.08); }
+        .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--light-gold); margin-bottom: 12px; display: inline-flex; align-items: center; gap: 12px; }
+        .footer-tagline { font-size: 0.85rem; color: var(--taupe); margin-bottom: 24px; font-weight: 300; }
+        .footer-links { display: flex; justify-content: center; gap: 36px; margin-bottom: 24px; flex-wrap: wrap; }
+        .footer-links a { font-size: 0.82rem; color: var(--soft-taupe); text-decoration: none; letter-spacing: 0.5px; transition: all 0.3s ease; }
+        .footer-links a:hover { color: var(--soft-gold); }
+        .footer-copy { font-size: 0.75rem; color: var(--taupe); opacity: 0.5; }
+        .footer-divider { width: 40px; height: 1px; background: rgba(201, 168, 76, 0.2); margin: 0 auto 24px; }
+        .footer-email { font-size: 0.82rem; color: var(--soft-taupe); margin-bottom: 24px; }
+        .footer-email a { color: var(--soft-gold); text-decoration: none; transition: color 0.3s ease; }
+        .footer-email a:hover { color: var(--light-gold); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar { padding: 16px 24px; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .privacy-hero { padding: 100px 24px 40px; }
+            .privacy-content { padding: 60px 24px 80px; }
+            footer { padding: 50px 24px 30px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <svg viewBox="0 0 40 40" fill="none">
+                <rect x="4" y="12" width="14" height="16" rx="3" fill="var(--soft-gold)" opacity="0.3"/>
+                <rect x="22" y="8" width="14" height="24" rx="3" fill="var(--soft-gold)" opacity="0.6"/>
+                <circle cx="11" cy="20" r="2" fill="var(--deep-brown)"/>
+                <circle cx="29" cy="20" r="2" fill="var(--deep-brown)"/>
+            </svg>
+            Listening Lounge
+        </a>
+        <div class="nav-links">
+            <a href="index.html#about">About</a>
+            <a href="index.html#how-it-works">How It Works</a>
+            <a href="index.html#sessions">Sessions</a>
+            <a href="index.html#faq">FAQ</a>
+            <a href="index.html#sessions" class="nav-cta">Book a Session</a>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="privacy-hero">
+        <div class="privacy-hero-content">
+            <h1>Privacy Policy</h1>
+            <p>The Listening Lounge by Kush<br>Last Updated: 22 May 2026</p>
+            <div class="hero-line"></div>
+        </div>
+    </section>
+
+    <!-- Policy Content -->
+    <div class="privacy-content">
+        <div class="policy-section">
+            <p>At The Listening Lounge by Kush, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, store, and protect your information when you use our website, contact us, book a session, or engage with our services.</p>
+            <p>This policy has been adapted from the document you provided and updated to reflect current UK privacy expectations and the nature of our listening support services.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>1. Who We Are</h2>
+            <p>The Listening Lounge by Kush is a safe and supportive listening space where individuals can talk freely, vent, express emotions, and feel heard without judgement.</p>
+            <p>We provide:</p>
+            <ul>
+                <li>Listening support</li>
+                <li>Emotional support conversations</li>
+                <li>Safe spaces to rant and express feelings</li>
+                <li>General wellbeing support</li>
+            </ul>
+            <p>We do not provide clinical therapy or medical treatment.</p>
+            <p>For the purpose of UK data protection laws, The Listening Lounge by Kush acts as the data controller for your personal information.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>2. Important Disclaimer</h2>
+            <p>The Listening Lounge by Kush is a non-clinical listening service.</p>
+            <p>We are solely focused on:</p>
+            <ul>
+                <li>Listening</li>
+                <li>Providing emotional support</li>
+                <li>Offering a safe and confidential space for people to rant, vent, and talk openly</li>
+            </ul>
+            <p>We are not:</p>
+            <ul>
+                <li>A therapy practice</li>
+                <li>A counselling service</li>
+                <li>A psychiatric or psychological service</li>
+                <li>A medical provider</li>
+                <li>A crisis intervention service</li>
+            </ul>
+            <p>Our services should not be considered a replacement for:</p>
+            <ul>
+                <li>Professional therapy</li>
+                <li>Counselling</li>
+                <li>Mental health treatment</li>
+                <li>Medical advice</li>
+                <li>Emergency support</li>
+            </ul>
+            <p>If you are experiencing:</p>
+            <ul>
+                <li>Severe emotional distress</li>
+                <li>Thoughts of self-harm</li>
+                <li>Suicidal thoughts</li>
+                <li>A mental health crisis</li>
+                <li>A medical emergency</li>
+            </ul>
+            <p>Please contact:</p>
+            <ul>
+                <li>Emergency services</li>
+                <li>Your GP</li>
+                <li>A licensed therapist or counsellor</li>
+                <li>Relevant crisis support services immediately</li>
+            </ul>
+            <p>By using our services, you acknowledge and understand the nature and limitations of the support we provide.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>3. Information We Collect</h2>
+            <p>We may collect the following information:</p>
+            <h3>Personal Information</h3>
+            <ul>
+                <li>Name</li>
+                <li>Email address</li>
+                <li>Telephone number</li>
+                <li>Booking information</li>
+                <li>Payment details where applicable</li>
+                <li>Messages or enquiries you send to us</li>
+                <li>Information voluntarily shared during conversations or sessions</li>
+            </ul>
+            <h3>Technical Information</h3>
+            <p>When you use our website, we may automatically collect:</p>
+            <ul>
+                <li>IP address</li>
+                <li>Browser type</li>
+                <li>Device information</li>
+                <li>Website activity</li>
+                <li>Cookies and analytics data</li>
+                <li>General location data</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2>4. Sensitive Information</h2>
+            <p>As our services involve emotional conversations, you may voluntarily share sensitive personal information during sessions.</p>
+            <p>We treat all information shared with care, respect, and confidentiality.</p>
+            <p>Sensitive information will only be processed:</p>
+            <ul>
+                <li>With your consent</li>
+                <li>To provide our services</li>
+                <li>Where required by law</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2>5. How We Use Your Information</h2>
+            <p>We may use your information to:</p>
+            <ul>
+                <li>Provide listening support services</li>
+                <li>Respond to enquiries</li>
+                <li>Manage bookings and appointments</li>
+                <li>Improve our services and website</li>
+                <li>Send updates or important communications</li>
+                <li>Maintain safety and security</li>
+                <li>Meet legal obligations</li>
+                <li>Send marketing communications where consent is given</li>
+            </ul>
+            <p>We do not sell your personal information to third parties.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>6. Confidentiality</h2>
+            <p>We aim to provide a private and safe environment for all conversations.</p>
+            <p>Information shared with us will be treated confidentially unless:</p>
+            <ul>
+                <li>There is a serious risk of harm to yourself or others</li>
+                <li>Safeguarding concerns arise</li>
+                <li>Disclosure is legally required</li>
+                <li>Criminal activity is disclosed</li>
+            </ul>
+            <p>Where appropriate, we will attempt to discuss this with you first.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>7. Lawful Basis for Processing</h2>
+            <p>Under UK GDPR, we process personal information under the following lawful bases:</p>
+            <ul>
+                <li>Consent</li>
+                <li>Legitimate interests</li>
+                <li>Contractual necessity</li>
+                <li>Legal obligations</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2>8. Data Storage and Security</h2>
+            <p>We take appropriate security measures to protect your personal information from:</p>
+            <ul>
+                <li>Unauthorised access</li>
+                <li>Loss</li>
+                <li>Misuse</li>
+                <li>Disclosure</li>
+                <li>Alteration</li>
+            </ul>
+            <p>While we aim to protect your information, no online system can ever be guaranteed to be completely secure.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>9. Data Retention</h2>
+            <p>We only retain personal information for as long as necessary to:</p>
+            <ul>
+                <li>Provide services</li>
+                <li>Comply with legal obligations</li>
+                <li>Resolve disputes</li>
+                <li>Maintain business records</li>
+            </ul>
+            <p>When no longer required, information will be securely deleted or anonymised.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>10. Cookies and Analytics</h2>
+            <p>Our website may use:</p>
+            <ul>
+                <li>Cookies</li>
+                <li>Analytics tools</li>
+                <li>Website performance technologies</li>
+            </ul>
+            <p>These help us:</p>
+            <ul>
+                <li>Improve user experience</li>
+                <li>Understand website usage</li>
+                <li>Monitor website performance</li>
+            </ul>
+            <p>You may disable cookies through your browser settings.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>11. Marketing Communications</h2>
+            <p>Where you have given consent, we may send:</p>
+            <ul>
+                <li>Service updates</li>
+                <li>Promotional content</li>
+                <li>Wellness related information</li>
+                <li>Announcements</li>
+            </ul>
+            <p>You may unsubscribe at any time.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>12. Third Party Services</h2>
+            <p>We may use trusted third party providers for:</p>
+            <ul>
+                <li>Website hosting</li>
+                <li>Booking systems</li>
+                <li>Payment processing</li>
+                <li>Analytics</li>
+                <li>Communication services</li>
+            </ul>
+            <p>These providers are expected to handle your information securely and lawfully.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>13. Your Rights</h2>
+            <p>Under UK GDPR, you may have the right to:</p>
+            <ul>
+                <li>Access your personal information</li>
+                <li>Correct inaccurate information</li>
+                <li>Request deletion of your information</li>
+                <li>Restrict processing</li>
+                <li>Object to processing</li>
+                <li>Withdraw consent</li>
+                <li>Request data portability</li>
+                <li>Lodge a complaint with the Information Commissioner's Office (ICO)</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2>14. Children and Young People</h2>
+            <p>Our services are not intended for individuals under 18 without appropriate parental or guardian involvement where necessary.</p>
+            <p>We do not knowingly collect personal information from minors unlawfully.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>15. International Data Transfers</h2>
+            <p>Where data is transferred outside the UK, appropriate safeguards will be implemented to protect your information.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>16. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time.</p>
+            <p>The latest version will always be available on our website.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>17. Contact Us</h2>
+            <p>If you have questions regarding this Privacy Policy or your information, please contact:</p>
+            <p>The Listening Lounge by Kush<br>Email: <a href="mailto:info@kushthehost.com" style="color: var(--warm-brown); text-decoration: underline;">info@kushthehost.com</a><br>Website: kushthehost.com</p>
+        </div>
+
+        <div class="policy-section">
+            <h2>18. Safeguarding and Welfare</h2>
+            <p>The wellbeing and safety of our users is important to us.</p>
+            <p>While we provide supportive listening services, users remain responsible for seeking professional mental health or medical support where necessary.</p>
+            <p>If we believe there is an immediate risk of serious harm, we may take appropriate safeguarding action in accordance with legal and ethical responsibilities.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <svg viewBox="0 0 40 40" fill="none" width="28" height="28">
+                <rect x="4" y="12" width="14" height="16" rx="3" fill="var(--soft-gold)" opacity="0.3"/>
+                <rect x="22" y="8" width="14" height="24" rx="3" fill="var(--soft-gold)" opacity="0.6"/>
+                <circle cx="11" cy="20" r="2" fill="var(--light-gold)"/>
+                <circle cx="29" cy="20" r="2" fill="var(--light-gold)"/>
+            </svg>
+            Listening Lounge by Kush
+        </div>
+        <p class="footer-tagline">A safe space to rant, be heard, and heal.</p>
+        <div class="footer-divider"></div>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="index.html#how-it-works">How It Works</a>
+            <a href="index.html#sessions">Book</a>
+            <a href="index.html#faq">FAQ</a>
+            <a href="privacy.html">Privacy</a>
+        </div>
+        <p class="footer-email">Questions? <a href="mailto:info@kushthehost.com">info@kushthehost.com</a></p>
+        <p class="footer-copy">Listening Lounge by Kush &middot; Confidential Emotional Support &middot; May 2026</p>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'fixed';
+            navLinks.style.top = '70px';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'rgba(247, 242, 234, 0.98)';
+            navLinks.style.backdropFilter = 'blur(20px)';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.padding = '24px';
+            navLinks.style.gap = '24px';
+            navLinks.style.boxShadow = '0 10px 40px rgba(44,24,16,0.1)';
+            navLinks.style.zIndex = '999';
+        }
+    </script>
+</body>
+</html>
