@@ -241,6 +241,7 @@
         }
         .scroll-hint span { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--taupe); }
         .scroll-hint-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--soft-gold), transparent); animation: breathe 2.5s ease infinite; }
+        @media (max-width: 768px) { .scroll-hint { display: none; } }
 
         /* NAVBAR KUSH LOGO */
         .nav-logo-kush {
@@ -592,6 +593,94 @@
             .testimonial-slide { padding: 40px 24px; }
             .carousel-dots { margin-top: 300px; }
         }
+
+        /* ========== FREE SESSION BANNER ========== */
+        .free-banner {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 998;
+            background: linear-gradient(135deg, var(--deep-brown) 0%, var(--medium-brown) 100%);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-radius: 50px;
+            padding: 12px 28px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 8px 30px rgba(44, 24, 16, 0.25);
+            animation: fadeUp 0.8s ease 1.5s forwards;
+            opacity: 0;
+            max-width: 90vw;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .free-banner-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--soft-gold);
+            border-radius: 50%;
+            animation: pulse 2s ease infinite;
+            flex-shrink: 0;
+        }
+        .free-banner-text {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--light-gold);
+            letter-spacing: 0.3px;
+        }
+        .free-banner-text strong {
+            color: var(--soft-gold);
+            font-weight: 600;
+        }
+        .free-banner-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--soft-gold);
+            color: var(--deep-brown);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .free-banner-btn:hover {
+            background: var(--light-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(201, 168, 76, 0.3);
+        }
+        .free-banner-close {
+            background: none;
+            border: none;
+            color: var(--taupe);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0 4px;
+            line-height: 1;
+            transition: color 0.3s ease;
+            flex-shrink: 0;
+        }
+        .free-banner-close:hover {
+            color: var(--light-gold);
+        }
+        @media (max-width: 768px) {
+            .free-banner {
+                top: 70px;
+                padding: 10px 18px;
+                gap: 10px;
+            }
+            .free-banner-text {
+                font-size: 0.78rem;
+                text-align: center;
+            }
+            .free-banner-btn {
+                padding: 6px 16px;
+                font-size: 0.75rem;
+            }
+        }
     </style>
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:url" content="https://www.kushthehost.com">
@@ -641,6 +730,17 @@
             <svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
         </button>
     </nav>
+    <!-- ========== FREE SESSION BANNER ========== -->
+    <div class="free-banner" id="free-banner">
+        <span class="free-banner-dot"></span>
+        <span class="free-banner-text"><strong>Limited:</strong> Free sessions available until June 7</span>
+        <a href="https://calendly.com/kushthehost/listening-lounge-clone-1" class="free-banner-btn" target="_blank" rel="noopener">
+            Book Free Session
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <button class="free-banner-close" onclick="dismissFreeBanner()" aria-label="Dismiss banner">&times;</button>
+    </div>
+
 
     <!-- ========== HERO ========== -->
     <section class="hero">
@@ -707,7 +807,7 @@
                         <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                     </div>
                     <p>No Judgement</p>
-                    <span>Just Listening</span>
+                    <span>Just Listen</span>
                 </div>
             </div>
         </div>
@@ -1289,6 +1389,28 @@
         const carousel = document.querySelector('.testimonial-carousel');
         carousel.addEventListener('mouseenter', stopCarousel);
         carousel.addEventListener('mouseleave', startCarousel);
+
+        // ========== FREE BANNER DISMISS ==========
+        function dismissFreeBanner() {
+            const banner = document.getElementById('free-banner');
+            banner.style.transition = 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+            banner.style.opacity = '0';
+            banner.style.transform = 'translateX(-50%) translateY(-20px)';
+            setTimeout(() => { banner.style.display = 'none'; }, 500);
+            localStorage.setItem('freeBannerDismissed', 'true');
+        }
+
+        // Show banner if not dismissed and before June 7, 2026
+        function checkFreeBanner() {
+            const banner = document.getElementById('free-banner');
+            if (!banner) return;
+            const now = new Date();
+            const cutoff = new Date('2026-06-08T00:00:00'); // June 7 end of day
+            if (now > cutoff || localStorage.getItem('freeBannerDismissed') === 'true') {
+                banner.style.display = 'none';
+            }
+        }
+        checkFreeBanner();
     </script>
 </body>
 </html>
