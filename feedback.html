@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback | Listening Lounge by Kush</title>
+    <meta name="description" content="Share your feedback about your Listening Lounge session. Your voice matters.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #F7F2EA;
+            --warm-white: #FDF9F3;
+            --ivory: #FFFDF8;
+            --deep-brown: #2C1810;
+            --medium-brown: #5C3D2E;
+            --warm-brown: #8B6914;
+            --soft-gold: #C9A84C;
+            --light-gold: #E8D5A3;
+            --muted-gold: #B8954F;
+            --taupe: #A08B7A;
+            --soft-taupe: #C4B5A5;
+            --parchment: #EDE6D8;
+            --shadow-soft: rgba(44, 24, 16, 0.06);
+            --shadow-medium: rgba(44, 24, 16, 0.1);
+            --shadow-deep: rgba(44, 24, 16, 0.15);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--deep-brown);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.7;
+        }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        @keyframes breathe { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.8; } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes drawLine { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        @keyframes heartBeat { 0%, 100% { transform: scale(1); } 14% { transform: scale(1.15); } 28% { transform: scale(1); } 42% { transform: scale(1.15); } 70% { transform: scale(1); } }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-left { opacity: 0; transform: translateX(-40px); transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+        .reveal-scale { opacity: 0; transform: scale(0.92); transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal-scale.visible { opacity: 1; transform: scale(1); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
+
+        /* Navbar */
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 20px 48px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(247, 242, 234, 0.92);
+            backdrop-filter: blur(24px) saturate(1.2);
+            box-shadow: 0 2px 30px var(--shadow-soft);
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem; font-weight: 500; color: var(--deep-brown);
+            text-decoration: none; display: flex; align-items: center; gap: 12px;
+        }
+        .nav-logo img { width: 36px; height: 36px; object-fit: contain; border-radius: 8px; opacity: 0.9; }
+        .nav-logo-text { display: flex; flex-direction: column; gap: 0; }
+        .nav-logo-text .brand-main { font-size: 1.3rem; line-height: 1.2; }
+        .nav-logo-text .brand-sub { font-size: 0.65rem; font-weight: 400; color: var(--taupe); letter-spacing: 2px; text-transform: uppercase; line-height: 1; }
+        .nav-links { display: flex; gap: 36px; align-items: center; }
+        .nav-links a {
+            font-size: 0.82rem; font-weight: 400; color: var(--medium-brown);
+            text-decoration: none; letter-spacing: 0.8px;
+            position: relative; transition: all 0.4s ease; padding: 4px 0;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -2px; left: 50%; width: 0; height: 1.5px;
+            background: var(--soft-gold); transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateX(-50%);
+        }
+        .nav-links a:hover { color: var(--deep-brown); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: var(--deep-brown); color: var(--cream) !important;
+            padding: 10px 24px; border-radius: 40px; font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--medium-brown); transform: translateY(-2px); box-shadow: 0 6px 20px var(--shadow-deep); }
+        .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001; }
+        .mobile-menu-btn svg { width: 24px; height: 24px; stroke: var(--deep-brown); fill: none; stroke-width: 2; }
+
+        /* Hero */
+        .feedback-hero {
+            padding: 140px 48px 80px;
+            text-align: center;
+            background: linear-gradient(180deg, var(--warm-white) 0%, var(--ivory) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .feedback-hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(201, 168, 76, 0.06) 0%, transparent 60%);
+        }
+        .feedback-hero-content { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+        .hero-label {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: rgba(201, 168, 76, 0.1); border: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 10px 22px; border-radius: 40px;
+            font-size: 0.75rem; font-weight: 500; color: var(--warm-brown);
+            letter-spacing: 1.5px; text-transform: uppercase;
+            margin-bottom: 32px; opacity: 0; animation: fadeUp 0.8s ease 0.3s forwards;
+        }
+        .hero-label .dot { width: 7px; height: 7px; background: var(--soft-gold); border-radius: 50%; animation: pulse 2.5s ease infinite; }
+        .feedback-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.6rem); font-weight: 400;
+            color: var(--deep-brown); margin-bottom: 20px; line-height: 1.15;
+            opacity: 0; animation: fadeUp 1s ease 0.5s forwards;
+        }
+        .feedback-hero h1 em { font-style: italic; color: var(--warm-brown); }
+        .feedback-hero p {
+            font-size: 1.05rem; font-weight: 300; color: var(--medium-brown);
+            line-height: 1.8; max-width: 520px; margin: 0 auto;
+            opacity: 0; animation: fadeUp 0.9s ease 0.7s forwards;
+        }
+        .hero-line { width: 60px; height: 1.5px; background: var(--soft-gold); margin: 28px auto 0; opacity: 0; animation: fadeScale 1s ease 1s forwards; transform-origin: center; }
+
+        /* Form */
+        .feedback-form {
+            max-width: 720px; margin: 0 auto;
+            padding: 80px 48px 120px;
+        }
+        .form-section {
+            margin-bottom: 56px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+            opacity: 0; transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .form-section.visible { opacity: 1; transform: translateY(0); }
+        .form-section:last-child { border-bottom: none; }
+
+        .section-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem; font-weight: 500;
+            color: var(--soft-gold); letter-spacing: 2px;
+            text-transform: uppercase; margin-bottom: 12px;
+        }
+        .form-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem; font-weight: 500;
+            color: var(--deep-brown); margin-bottom: 28px;
+            line-height: 1.3;
+        }
+        .form-section h2 em { font-style: italic; color: var(--warm-brown); }
+
+        /* Radio/Checkbox groups */
+        .option-group { display: flex; flex-direction: column; gap: 12px; }
+        .option-item {
+            display: flex; align-items: center; gap: 16px;
+            padding: 16px 20px;
+            background: var(--warm-white);
+            border: 1.5px solid rgba(201, 168, 76, 0.08);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .option-item::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+            background: var(--soft-gold); transform: scaleY(0);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .option-item:hover {
+            border-color: rgba(201, 168, 76, 0.2);
+            transform: translateX(6px);
+            box-shadow: 0 4px 20px var(--shadow-soft);
+        }
+        .option-item.selected {
+            background: rgba(201, 168, 76, 0.06);
+            border-color: var(--soft-gold);
+            transform: translateX(8px);
+        }
+        .option-item.selected::before { transform: scaleY(1); }
+        .option-item input {
+            width: 22px; height: 22px;
+            accent-color: var(--soft-gold);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .option-item label {
+            font-size: 0.95rem; font-weight: 400;
+            color: var(--deep-brown); cursor: pointer;
+            flex: 1;
+        }
+        .option-item.selected label { font-weight: 500; }
+
+        /* Text areas */
+        .text-area-wrap {
+            position: relative;
+            margin-top: 8px;
+        }
+        .text-area-wrap textarea {
+            width: 100%; min-height: 140px;
+            padding: 20px 24px;
+            background: var(--warm-white);
+            border: 1.5px solid rgba(201, 168, 76, 0.1);
+            border-radius: 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem; font-weight: 300;
+            color: var(--deep-brown); line-height: 1.8;
+            resize: vertical;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            outline: none;
+        }
+        .text-area-wrap textarea::placeholder {
+            color: var(--soft-taupe); font-weight: 300;
+        }
+        .text-area-wrap textarea:focus {
+            border-color: var(--soft-gold);
+            background: var(--ivory);
+            box-shadow: 0 4px 20px rgba(201, 168, 76, 0.08);
+        }
+        .char-count {
+            position: absolute; bottom: 12px; right: 16px;
+            font-size: 0.72rem; color: var(--taupe);
+            opacity: 0; transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .text-area-wrap textarea:focus + .char-count,
+        .text-area-wrap textarea:not(:placeholder-shown) + .char-count {
+            opacity: 1;
+        }
+
+        /* Sentence completion */
+        .sentence-pair {
+            display: flex; flex-direction: column; gap: 20px;
+        }
+        .sentence-row {
+            display: flex; align-items: baseline; gap: 12px;
+            flex-wrap: wrap;
+        }
+        .sentence-row .prefix {
+            font-size: 0.95rem; font-weight: 400;
+            color: var(--medium-brown); white-space: nowrap;
+        }
+        .sentence-row input {
+            flex: 1; min-width: 200px;
+            padding: 12px 16px;
+            background: var(--warm-white);
+            border: 1.5px solid rgba(201, 168, 76, 0.1);
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem; font-weight: 300;
+            color: var(--deep-brown);
+            transition: all 0.4s ease;
+            outline: none;
+        }
+        .sentence-row input:focus {
+            border-color: var(--soft-gold);
+            background: var(--ivory);
+            box-shadow: 0 4px 20px rgba(201, 168, 76, 0.08);
+        }
+        .sentence-row input::placeholder { color: var(--soft-taupe); }
+
+        /* Submit */
+        .submit-section {
+            text-align: center;
+            padding-top: 20px;
+        }
+        .btn-submit {
+            display: inline-flex; align-items: center; gap: 12px;
+            background: var(--deep-brown); color: var(--cream);
+            padding: 18px 48px; border-radius: 50px;
+            font-size: 1rem; font-weight: 500;
+            text-decoration: none; border: none; cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            letter-spacing: 0.3px; position: relative; overflow: hidden;
+        }
+        .btn-submit::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: translateX(-100%); transition: transform 0.6s ease;
+        }
+        .btn-submit:hover::before { transform: translateX(100%); }
+        .btn-submit:hover {
+            background: var(--medium-brown);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px var(--shadow-deep);
+        }
+        .btn-submit svg { transition: transform 0.4s ease; }
+        .btn-submit:hover svg { transform: translateX(5px); }
+        .btn-submit:disabled {
+            opacity: 0.6; cursor: not-allowed;
+            transform: none; box-shadow: none;
+        }
+
+        /* Thank you state */
+        .thank-you {
+            display: none;
+            text-align: center;
+            padding: 60px 40px;
+            background: var(--ivory);
+            border-radius: 24px;
+            border: 1px solid rgba(201, 168, 76, 0.1);
+            animation: fadeScale 0.8s ease forwards;
+        }
+        .thank-you.show { display: block; }
+        .thank-you .heart {
+            font-size: 3rem;
+            display: inline-block;
+            animation: heartBeat 1.5s ease infinite;
+            margin-bottom: 24px;
+        }
+        .thank-you h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem; font-weight: 400;
+            color: var(--deep-brown); margin-bottom: 16px;
+        }
+        .thank-you p {
+            font-size: 1rem; font-weight: 300;
+            color: var(--medium-brown); line-height: 1.8;
+            max-width: 400px; margin: 0 auto 32px;
+        }
+        .thank-you .back-link {
+            display: inline-flex; align-items: center; gap: 8px;
+            color: var(--warm-brown); text-decoration: none;
+            font-size: 0.9rem; font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .thank-you .back-link:hover { color: var(--deep-brown); }
+
+        /* Footer */
+        footer { background: var(--deep-brown); padding: 60px 48px 40px; text-align: center; border-top: 1px solid rgba(201, 168, 76, 0.08); }
+        .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--light-gold); margin-bottom: 12px; display: inline-flex; align-items: center; gap: 12px; }
+        .footer-tagline { font-size: 0.85rem; color: var(--taupe); margin-bottom: 24px; font-weight: 300; }
+        .footer-links { display: flex; justify-content: center; gap: 36px; margin-bottom: 24px; flex-wrap: wrap; }
+        .footer-links a { font-size: 0.82rem; color: var(--soft-taupe); text-decoration: none; letter-spacing: 0.5px; transition: all 0.3s ease; }
+        .footer-links a:hover { color: var(--soft-gold); }
+        .footer-email { font-size: 0.82rem; color: var(--soft-taupe); margin-bottom: 24px; }
+        .footer-email a { color: var(--soft-gold); text-decoration: none; transition: color 0.3s ease; }
+        .footer-email a:hover { color: var(--light-gold); }
+        .footer-copy { font-size: 0.75rem; color: var(--taupe); opacity: 0.5; }
+        .footer-divider { width: 40px; height: 1px; background: rgba(201, 168, 76, 0.2); margin: 0 auto 24px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar { padding: 16px 24px; }
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .feedback-hero { padding: 100px 24px 50px; }
+            .feedback-form { padding: 50px 24px 80px; }
+            .form-section h2 { font-size: 1.35rem; }
+            .option-item { padding: 14px 16px; }
+            .sentence-row { flex-direction: column; align-items: stretch; }
+            .sentence-row .prefix { white-space: normal; }
+            .sentence-row input { min-width: auto; }
+            .btn-submit { padding: 16px 36px; font-size: 0.95rem; }
+        }
+    </style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="kush-logo.JPG" alt="Kush The Host">
+            <div class="nav-logo-text">
+                <span class="brand-main">Listening Lounge</span>
+                <span class="brand-sub">by Kush</span>
+            </div>
+        </a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#sessions">Sessions</a>
+            <a href="index.html#faq">FAQ</a>
+            <a href="privacy.html">Privacy</a>
+        </div>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="feedback-hero">
+        <div class="feedback-hero-content">
+            <div class="hero-label">
+                <span class="dot"></span>
+                We Value Your Voice
+            </div>
+            <h1>We'd Love to <em>Hear From You</em></h1>
+            <p>Thank you for spending time with us today. Your thoughts and feedback help us create an even better experience for everyone who visits the Listening Lounge.</p>
+            <div class="hero-line"></div>
+        </div>
+    </section>
+
+    <!-- Form -->
+    <form class="feedback-form" id="feedback-form" action="https://formspree.io/f/xykvvrak" method="POST">
+
+        <!-- Q1: How are you feeling -->
+        <div class="form-section reveal">
+            <p class="section-number">Question 01</p>
+            <h2>How are you feeling after your session today?</h2>
+            <div class="option-group">
+                <div class="option-item" onclick="selectOption(this, 'feeling')">
+                    <input type="radio" name="feeling" data-fs-field value="much-better" id="f1">
+                    <label for="f1">Much better</label>
+                </div>
+                <div class="option-item" onclick="selectOption(this, 'feeling')">
+                    <input type="radio" name="feeling" data-fs-field value="better" id="f2">
+                    <label for="f2">Better</label>
+                </div>
+                <div class="option-item" onclick="selectOption(this, 'feeling')">
+                    <input type="radio" name="feeling" data-fs-field value="same" id="f3">
+                    <label for="f3">About the same</label>
+                </div>
+                <div class="option-item" onclick="selectOption(this, 'feeling')">
+                    <input type="radio" name="feeling" data-fs-field value="not-sure" id="f4">
+                    <label for="f4">Not sure yet</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q2: Did you feel heard -->
+        <div class="form-section reveal delay-1">
+            <p class="section-number">Question 02</p>
+            <h2>Did you feel heard during your session?</h2>
+            <div class="option-group">
+                <div class="option-item" onclick="selectOption(this, 'heard')">
+                    <input type="radio" name="heard" data-fs-field value="yes-completely" id="h1">
+                    <label for="h1">Yes, completely</label>
+                </div>
+                <div class="option-item" onclick="selectOption(this, 'heard')">
+                    <input type="radio" name="heard" data-fs-field value="mostly" id="h2">
+                    <label for="h2">Mostly</label>
+                </div>
+                <div class="option-item" onclick="selectOption(this, 'heard')">
+                    <input type="radio" name="heard" data-fs-field value="somewhat" id="h3">
+                    <label for="h3">Somewhat</label>
+                </div>
+                <div class="option-item" onclick="selectOption(this, 'heard')">
+                    <input type="radio" name="heard" data-fs-field value="not-really" id="h4">
+                    <label for="h4">Not really</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q3: Most helpful -->
+        <div class="form-section reveal delay-2">
+            <p class="section-number">Question 03</p>
+            <h2>What was most helpful about today's session?</h2>
+            <div class="text-area-wrap">
+                <textarea name="most-helpful" data-fs-field placeholder="Share what stood out to you..." maxlength="500"></textarea>
+                <span class="char-count">0 / 500</span>
+            </div>
+        </div>
+
+        <!-- Q4: Improvement -->
+        <div class="form-section reveal delay-3">
+            <p class="section-number">Question 04</p>
+            <h2>Is there anything we could do differently or improve?</h2>
+            <div class="text-area-wrap">
+                <textarea name="improve" data-fs-field placeholder="Your honest feedback helps us grow..." maxlength="500"></textarea>
+                <span class="char-count">0 / 500</span>
+            </div>
+        </div>
+
+        <!-- Q5: Before/After -->
+        <div class="form-section reveal delay-4">
+            <p class="section-number">Question 05</p>
+            <h2>Complete this sentence:</h2>
+            <div class="sentence-pair">
+                <div class="sentence-row">
+                    <span class="prefix">Before this session, I felt</span>
+                    <input type="text" name="before-session" data-fs-field placeholder="...">
+                </div>
+                <div class="sentence-row">
+                    <span class="prefix">After this session, I feel</span>
+                    <input type="text" name="after-session" data-fs-field placeholder="...">
+                </div>
+            </div>
+        </div>
+
+        <!-- Q6: Friend recommendation -->
+        <div class="form-section reveal delay-1">
+            <p class="section-number">Question 06</p>
+            <h2>If a friend asked you about the Listening Lounge by Kush, what would you tell them?</h2>
+            <div class="text-area-wrap">
+                <textarea name="friend-recommend" data-fs-field placeholder="Imagine a friend needs a listening ear..." maxlength="500"></textarea>
+                <span class="char-count">0 / 500</span>
+            </div>
+        </div>
+
+        <!-- Q7: Would recommend -->
+        <div class="form-section reveal delay-2">
+            <p class="section-number">Question 07</p>
+            <h2>Would you recommend the Listening Lounge by Kush to someone who needs a listening ear?</h2>
+            <div class="option-group">
+                <div class="option-item" onclick="selectOption(this, 'recommend')">
+                    <input type="radio" name="recommend" data-fs-field value="yes" id="r1">
+                    <label for="r1">Yes</label>
+                </div>
+                <div class="option-item" onclick="selectOption(this, 'recommend')">
+                    <input type="radio" name="recommend" data-fs-field value="maybe" id="r2">
+                    <label for="r2">Maybe</label>
+                </div>
+                <div class="option-item" onclick="selectOption(this, 'recommend')">
+                    <input type="radio" name="recommend" data-fs-field value="no" id="r3">
+                    <label for="r3">No</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Q8: Testimonial permission -->
+        <div class="form-section reveal delay-3">
+            <p class="section-number">Question 08</p>
+            <h2>May we anonymously share your feedback as a testimonial?</h2>
+            <div class="option-group">
+                <div class="option-item" onclick="selectOption(this, 'testimonial')">
+                    <input type="radio" name="testimonial" data-fs-field value="yes" id="t1">
+                    <label for="t1">Yes</label>
+                </div>
+                <div class="option-item" onclick="selectOption(this, 'testimonial')">
+                    <input type="radio" name="testimonial" data-fs-field value="no" id="t2">
+                    <label for="t2">No</label>
+                </div>
+            </div>
+            <div class="text-area-wrap" style="margin-top: 20px;">
+                <textarea name="testimonial-text" data-fs-field placeholder="If yes, please share a few words about your experience..." maxlength="500"></textarea>
+                <span class="char-count">0 / 500</span>
+            </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="form-section reveal delay-4 submit-section">
+            <button type="submit" class="btn-submit" id="submit-btn" data-fs-submit-btn>
+                Send My Feedback
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+        </div>
+
+        <!-- Thank You -->
+        <div class="thank-you" id="thank-you">
+            <div class="heart">💛</div>
+            <h2>Thank you for trusting us with your story.</h2>
+            <p>Your voice matters. Every piece of feedback helps us create a better space for everyone who walks through our virtual door.</p>
+            <a href="index.html" class="back-link">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Listening Lounge
+            </a>
+        </div>
+
+    </form>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <svg viewBox="0 0 40 40" fill="none" width="28" height="28">
+                <rect x="4" y="12" width="14" height="16" rx="3" fill="var(--soft-gold)" opacity="0.3"/>
+                <rect x="22" y="8" width="14" height="24" rx="3" fill="var(--soft-gold)" opacity="0.6"/>
+                <circle cx="11" cy="20" r="2" fill="var(--light-gold)"/>
+                <circle cx="29" cy="20" r="2" fill="var(--light-gold)"/>
+            </svg>
+            Listening Lounge by Kush
+        </div>
+        <p class="footer-tagline">A safe space to rant, be heard, and heal.</p>
+        <div class="footer-divider"></div>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#sessions">Book</a>
+            <a href="index.html#faq">FAQ</a>
+            <a href="privacy.html">Privacy</a>
+        </div>
+        <p class="footer-email">Questions? <a href="mailto:info@kushthehost.com">info@kushthehost.com</a></p>
+        <p class="footer-copy">Listening Lounge by Kush &middot; Confidential Emotional Support &middot; May 2026</p>
+    </footer>
+
+    <script>
+        <script>
+        // Scroll reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal, .form-section').forEach(el => revealObserver.observe(el));
+
+        // Option selection
+        function selectOption(item, groupName) {
+            document.querySelectorAll(`input[name="${groupName}"]`).forEach(input => {
+                input.closest('.option-item').classList.remove('selected');
+            });
+            item.classList.add('selected');
+            item.querySelector('input').checked = true;
+        }
+
+        // Character counter
+        document.querySelectorAll('.text-area-wrap textarea, .text-area-wrap input').forEach(field => {
+            const max = field.getAttribute('maxlength');
+            const counter = field.parentElement.querySelector('.char-count');
+            if (!counter || !max) return;
+
+            field.addEventListener('input', () => {
+                counter.textContent = `${field.value.length} / ${max}`;
+                if (field.value.length > max * 0.9) {
+                    counter.style.color = 'var(--warm-brown)';
+                } else {
+                    counter.style.color = 'var(--taupe)';
+                }
+            });
+        });
+
+        // Formspree AJAX integration
+        window.formspree = window.formspree || function () {
+            (formspree.q = formspree.q || []).push(arguments);
+        };
+        formspree('initForm', {
+            formElement: '#feedback-form',
+            formId: 'xykvvrak',
+            onSuccess: (context, result) => {
+                const form = document.getElementById('feedback-form');
+                const thankYou = document.getElementById('thank-you');
+                form.querySelectorAll('.form-section').forEach(s => s.style.display = 'none');
+                thankYou.classList.add('show');
+                window.scrollTo({ top: thankYou.offsetTop - 100, behavior: 'smooth' });
+            },
+            onError: (context, error) => {
+                console.log('Validation error:', error);
+            }
+        });
+
+        // Mobile menu
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('mobile-open');
+        }
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+</body>
+</html>
